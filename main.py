@@ -7,6 +7,7 @@ from pathlib import Path
 from fastapi.responses import RedirectResponse
 
 import os
+os.makedirs("uploads", exist_ok=True)
 
 app = FastAPI()
 
