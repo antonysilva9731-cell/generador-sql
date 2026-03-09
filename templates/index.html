@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<title>Generador SQL</title>
+
+<link rel="icon" type="image/png" href="/static/logo_sql.png">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+body{
+background: linear-gradient(180deg,#f6f8fb,#eef3f8);
+font-family: system-ui;
+}
+
+.header{
+background:#1e3a5f;
+color:white;
+padding:15px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.header h1{
+font-size:28px;
+margin:0;
+}
+
+.btn-info{
+background:#e9f1f8;
+border:none;
+color:#1e3a5f;
+}
+
+.main-container{
+margin-top:20px;
+}
+
+.card-form{
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+padding:25px;
+background:white;
+}
+
+.btn-generate{
+background:linear-gradient(90deg,#56c2c6,#6ed3b5);
+border:none;
+}
+
+.ad-box{
+background:#dfe8ef;
+border-radius:10px;
+padding:40px;
+text-align:center;
+color:#444;
+}
+
+
+.ad-lateral{
+height:400px;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+
+.ad-bottom{
+margin-top:25px;
+padding:25px;
+}
+
+.description-box{
+padding-left:15px;
+}
+
+.description-box p{
+font-size:18px;
+line-height:1.6;
+}
+
+.description-box li{
+font-size:17px;
+margin-bottom:6px;
+}
+
+.overlay-ad{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:9999;
+}
+
+.ad-overlay-box{
+background:white;
+padding:40px;
+border-radius:10px;
+width:500px;
+text-align:center;
+}
+
+.fake-ad{
+height:120px;
+background:#eee;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+margin-top:20px;
+}
+
+.step-number{
+width:40px;
+height:40px;
+border-radius:50%;
+background:#1e3a5f;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+margin:auto;
+margin-bottom:10px;
+font-size:18px;
+}
+
+.hero-description{
+font-size:20px;
+max-width:900px;
+margin:auto;
+line-height:1.6;
+}
+
+body{
+background: linear-gradient(180deg,#f6f8fb,#eef3f8);
+font-family: system-ui;
+min-height:100vh;
+}
+
+.main-container{
+margin-top:20px;
+min-height:calc(100vh - 160px);
+}
+
+.row{
+align-items:stretch;
+}
+
+.card-form,
+.ad-box,
+.description-box{
+height:100%;
+}
+
+.main-container{
+min-height:calc(100vh - 140px);
+}
+
+.main-container .row{
+height:100%;
+}
+
+#btnGenerar{
+font-weight:600;
+transition:all 0.2s ease;
+}
+
+#btnGenerar:disabled{
+background:#cfd8dc;
+color:#6c757d;
+cursor:not-allowed;
+}
+
+#btnGenerar:not(:disabled){
+background:linear-gradient(90deg,#56c2c6,#6ed3b5);
+color:white;
+font-weight:700;
+box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
+
+input[type="file"]::file-selector-button{
+background:#d1d5db;
+border:none;
+padding:6px 12px;
+margin-right:10px;
+border-radius:4px;
+font-weight:500;
+}
+
+input[type="file"]::file-selector-button:hover{
+background:#c1c7cd;
+}
+
+.seo-section{
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 6px 20px rgba(0,0,0,0.08);
+margin-bottom:30px;
+}
+
+.seo-section h2{
+margin-bottom:15px;
+font-size:26px;
+}
+
+.seo-section p{
+font-size:17px;
+line-height:1.7;
+}
+
+.seo-image{
+width:100%;
+max-width:600px;
+margin:20px auto;
+display:block;
+border-radius:8px;
+}
+
+.ad-seo{
+background:#dfe8ef;
+height:120px;
+border-radius:10px;
+display:flex;
+align-items:center;
+justify-content:center;
+margin:30px 0;
+}
+
+.seo-section{
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 6px 20px rgba(0,0,0,0.08);
+margin-bottom:30px;
+}
+
+.seo-section h2{
+margin-bottom:15px;
+font-size:26px;
+}
+
+.seo-section p{
+font-size:17px;
+line-height:1.7;
+}
+
+.seo-image{
+width:100%;
+max-width:600px;
+margin:20px auto;
+display:block;
+border-radius:8px;
+}
+
+.ad-seo{
+background:#dfe8ef;
+height:120px;
+border-radius:10px;
+display:flex;
+align-items:center;
+justify-content:center;
+margin:30px 0;
+}
+
+.footer{
+background:#1e3a5f;
+color:white;
+padding:40px 0;
+margin-top:60px;
+text-align:center;
+}
+
+.footer-links{
+margin-bottom:15px;
+}
+
+.footer-links a{
+color:#e9f1f8;
+margin:0 15px;
+text-decoration:none;
+font-size:15px;
+}
+
+.footer-links a:hover{
+text-decoration:underline;
+}
+
+.footer-text{
+max-width:800px;
+margin:auto;
+font-size:14px;
+opacity:0.9;
+}
+
+.footer-disclaimer{
+margin-top:10px;
+font-size:13px;
+opacity:0.8;
+}
+
+.footer-copy{
+margin-top:20px;
+font-size:13px;
+opacity:0.7;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+
+<div style="display:flex;align-items:center;gap:12px;">
+<img src="/static/logo_sql.png" style="height:45px">
+<h1>Generador SQL</h1>
+</div>
+
+<button class="btn btn-info" onclick="toggleComoFunciona()">¿Cómo generar el script SQL?</button>
+
+</div>
+
+
+<!-- SECCION COMO FUNCIONA -->
+<div id="comoFunciona" class="container mt-4" style="display:none;">
+
+<div class="card shadow-sm p-4">
+
+<h4 class="mb-3">¿Cómo funciona el generador de scripts SQL?</h4>
+
+<div class="row text-center">
+
+<div class="col-md-3">
+<div class="step-number">1</div>
+<p>Sube un archivo CSV, Excel o TXT.</p>
+</div>
+
+<div class="col-md-3">
+<div class="step-number">2</div>
+<p>Define el nombre de la tabla con el cual se generará el script.</p>
+</div>
+
+<div class="col-md-3">
+<div class="step-number">3</div>
+<p>Selecciona la base de datos y el tipo de Script a generar.</p>
+</div>
+
+<div class="col-md-3">
+<div class="step-number">4</div>
+<p>Descarga el script SQL generado.</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="container-fluid main-container px-5">
+
+<p class="text-center mb-4 hero-description">
+
+Convierte archivos CSV, Excel o TXT en scripts de SQL automáticamente.<br>
+Genera <b>CREATE TABLE</b> o <b>INSERT INTO</b> para bases de datos SQL Server, PostgreSQL, MySQL u Oracle.
+
+</p>
+
+
+<div class="row">
+
+<!-- AD LATERAL -->
+<div class="col-lg-3">
+
+<div class="ad-box ad-lateral">
+PUBLICIDAD<br>
+[AD LATERAL]
+</div>
+
+</div>
+
+
+<!-- FORMULARIO -->
+<div class="col-lg-5">
+
+<div class="card-form">
+
+<form id="formSQL" action="/generar" method="post" enctype="multipart/form-data" onsubmit="return iniciarProceso(event)">
+
+<div class="mb-3">
+<label class="form-label">Subir archivo</label>
+<input type="file" class="form-control" name="file" id="archivo" required>
+</div>
+
+<div class="mb-3">
+<label class="form-label">Nombre de la tabla</label>
+<input type="text" class="form-control" name="tabla" id="tabla" placeholder="Ejemplo: mi_tabla">
+<div class="invalid-feedback" id="error_tabla"></div>
+</div>
+
+<div class="mb-3">
+<label class="form-label">Base de datos</label>
+<select class="form-select" name="db" id="db">
+<option value="">--Seleccionar base de datos--</option>
+<option value="sqlserver">SQL Server</option>
+<option value="postgres">PostgreSQL</option>
+<option value="mysql">MySQL</option>
+<option value="oracle">Oracle</option>
+</select>
+<div class="invalid-feedback" id="error_db"></div>
+</div>
+
+<div class="mb-3">
+<label class="form-label">Tipo de SQL a generar</label>
+<select class="form-select" name="tipo_sql" id="tipo_sql">
+<option value="">--Seleccionar tipo de SQL--</option>
+<option value="create">CREATE TABLE</option>
+<option value="insert">INSERT INTO</option>
+</select>
+<div class="invalid-feedback" id="error_tipo_sql"></div>
+</div>
+
+<div class="d-grid">
+<button id="btnGenerar" class="btn btn-generate" type="submit" disabled>
+Generar archivo SQL
+</button>
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+
+<!-- DESCRIPCIÓN + AD -->
+<div class="col-lg-4 description-box">
+
+<div class="ad-box mb-4">
+ANUNCIO
+</div>
+
+<div class="card-form">
+
+<h4>Convierte datos en SQL fácilmente</h4>
+
+<p>
+Sube un archivo CSV, Excel o TXT y genera automáticamente scripts SQL listos para usar.
+</p>
+
+<ul>
+<li>Pruebas de bases de datos</li>
+<li>Clases universitarias</li>
+<li>Generar datasets de prueba</li>
+<li>Importar datos rápidamente</li>
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- OVERLAY PUBLICIDAD -->
+<div id="overlayAd" class="overlay-ad">
+
+<div class="ad-overlay-box">
+
+<h4>Generando archivo SQL...</h4>
+
+<div class="progress mt-3">
+<div id="progressBar" class="progress-bar progress-bar-striped progress-bar-animated" style="width:0%"></div>
+</div>
+
+<div class="fake-ad">
+ESPACIO PARA PUBLICIDAD
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+function toggleComoFunciona(){
+
+const seccion = document.getElementById("comoFunciona");
+
+if(seccion.style.display === "none"){
+    seccion.style.display = "block";
+    seccion.scrollIntoView({behavior:"smooth"});
+}else{
+    seccion.style.display = "none";
+}
+
+}
+
+</script>
+
+
+<!-- VALIDAR EXTENSION -->
+<script>
+
+document.getElementById("archivo").addEventListener("change", function(){
+
+const archivo = this.files[0];
+
+if (!archivo) return;
+
+const extensionesPermitidas = ["csv","xlsx","txt"];
+const extension = archivo.name.split(".").pop().toLowerCase();
+
+if (!extensionesPermitidas.includes(extension)){
+
+alert("Solo se permiten archivos CSV, Excel o TXT.");
+this.value = "";
+document.getElementById("btnGenerar").disabled = true;
+return;
+}
+
+document.getElementById("btnGenerar").disabled = false;
+
+});
+
+</script>
+
+
+<!-- VALIDAR FORM -->
+<script>
+
+function validarEnvio(){
+
+let valido = true;
+
+const tabla = document.getElementById("tabla");
+const db = document.getElementById("db");
+const tipo_sql = document.getElementById("tipo_sql");
+
+const errorTabla = document.getElementById("error_tabla");
+const errorDb = document.getElementById("error_db");
+const errorTipo = document.getElementById("error_tipo_sql");
+
+tabla.classList.remove("is-invalid");
+db.classList.remove("is-invalid");
+tipo_sql.classList.remove("is-invalid");
+
+errorTabla.innerText="";
+errorDb.innerText="";
+errorTipo.innerText="";
+
+if(tabla.value.trim()===""){
+tabla.classList.add("is-invalid");
+errorTabla.innerText="Debe ingresar el nombre de la tabla.";
+valido=false;
+}
+
+if(db.value===""){
+db.classList.add("is-invalid");
+errorDb.innerText="Debe seleccionar una base de datos.";
+valido=false;
+}
+
+if(tipo_sql.value===""){
+tipo_sql.classList.add("is-invalid");
+errorTipo.innerText="Debe seleccionar el tipo de SQL a generar.";
+valido=false;
+}
+
+return valido;
+
+}
+
+</script>
+
+
+<!-- LIMPIAR ERRORES -->
+<script>
+
+document.getElementById("tabla").addEventListener("input",function(){
+this.classList.remove("is-invalid");
+});
+
+document.getElementById("db").addEventListener("change",function(){
+this.classList.remove("is-invalid");
+});
+
+document.getElementById("tipo_sql").addEventListener("change",function(){
+this.classList.remove("is-invalid");
+});
+
+</script>
+
+
+<!-- BARRA DE PROGRESO -->
+<script>
+
+function iniciarProceso(e){
+
+if(!validarEnvio()){
+return false;
+}
+
+e.preventDefault();
+
+const overlay=document.getElementById("overlayAd");
+const bar=document.getElementById("progressBar");
+
+overlay.style.display="flex";
+
+let progreso=0;
+
+const intervalo=setInterval(function(){
+
+progreso+=20;
+bar.style.width=progreso+"%";
+
+if(progreso>=100){
+
+clearInterval(intervalo);
+document.getElementById("formSQL").submit();
+
+}
+
+},1000);
+
+}
+
+</script>
+
+<div class="container mt-5">
+
+<div class="seo-section">
+
+<h2>Convertir datos de un archivo CSV,TXT o EXCEL a SQL, completamente en linea y GRATIS</h2>
+
+<p>
+Muchas veces los desarrolladores necesitan pasar los datos que tienen en archivos de excel
+ o archivos planos a bases de datos.
+Este generador permite transformar archivos de datos en sentencias
+<b>CREATE TABLE</b> o <b>INSERT INTO</b> automáticamente.
+</p>
+
+<p>
+La herramienta analiza las columnas del archivo y genera el código SQL
+necesario para importar la información en bases de datos como
+SQL Server, PostgreSQL, MySQL u Oracle.
+</p>
+
+<img src="/static/csv-sql-example.png" class="seo-image">
+
+</div>
+
+
+<div class="ad-seo">
+ESPACIO PARA ANUNCIO
+</div>
+
+<div class="seo-section">
+
+<h2>Cómo convertir un archivo plano (CSV,TXT) o excel a Sentencias SQL</h2>
+
+<p>
+El proceso para generar un script SQL desde un archivo es muy simple:
+</p>
+
+<ul>
+<li>Sube tu archivo CSV, TXT o Excel.</li>
+<li>Define el nombre de la tabla.</li>
+<li>Selecciona el tipo de script SQL.</li>
+<li>Descarga el archivo generado.</li>
+</ul>
+
+<p>
+Este proceso automatiza la creación de scripts SQL evitando tener que
+escribir manualmente cientos de instrucciones INSERT INTO o CREATE TABLE.
+</p>
+
+</div>
+
+<div class="seo-section">
+
+<h2>Ejemplo de conversión de CSV a SQL</h2>
+
+<p>
+Supongamos que tienes un archivo plano en formato CSV con información de usuarios.
+Este tipo de archivos es muy común cuando se exportan datos desde Excel, sistemas
+administrativos o aplicaciones web. Un archivo CSV almacena la información en
+columnas separadas por un delimitador, normalmente una coma <b>,</b>.
+</p>
+
+<p>
+Por ejemplo, si tienes el siguiente archivo llamado <b>usuarios.csv</b>:
+</p>
+
+<pre>
+id,nombre,edad
+1,Ana,25
+2,Carlos,30
+3,María,22
+</pre>
+
+<p>
+En este caso el archivo contiene tres columnas: <b>id</b>, <b>nombre</b> y <b>edad</b>.
+La primera fila corresponde a los nombres de las columnas y las siguientes filas
+representan los registros que queremos insertar en una base de datos.
+</p>
+
+<p>
+Cuando subes este archivo al generador SQL, la herramienta realiza automáticamente
+varios pasos:
+</p>
+
+<ul>
+<li>Detecta el <b>delimitador</b> del archivo (coma, punto y coma, tabulación, etc.).</li>
+<li>Analiza los nombres de las columnas.</li>
+<li>Determina el <b>tipo de dato</b> de cada columna (texto, número, fecha, etc.).</li>
+<li>Genera un script SQL compatible con la base de datos seleccionada.</li>
+</ul>
+
+<h3>Script CREATE TABLE generado</h3>
+
+<p>
+Si eliges generar un script de tipo <b>CREATE TABLE</b>, la herramienta crea
+automáticamente la estructura de la tabla según las columnas detectadas
+en el archivo CSV.
+</p>
+
+<pre>
+CREATE TABLE usuarios (
+  id INT,
+  nombre VARCHAR(50),
+  edad INT
+);
+</pre>
+
+<p>
+Este script permite crear la tabla en la base de datos antes de insertar los datos.
+Los tipos de datos se infieren automáticamente analizando el contenido de cada
+columna del archivo.
+</p>
+
+<h3>Script INSERT INTO generado</h3>
+
+<p>
+Si eliges generar un script de tipo <b>INSERT INTO</b>, la herramienta crea
+las instrucciones necesarias para insertar cada registro del archivo en la tabla.
+</p>
+
+<pre>
+INSERT INTO usuarios (id,nombre,edad)
+VALUES (1,'Ana',25);
+
+INSERT INTO usuarios (id,nombre,edad)
+VALUES (2,'Carlos',30);
+
+INSERT INTO usuarios (id,nombre,edad)
+VALUES (3,'María',22);
+</pre>
+
+<p>
+De esta forma puedes importar fácilmente grandes volúmenes de datos en tu base
+de datos sin tener que escribir manualmente cada sentencia SQL. Este tipo de
+conversión es muy útil cuando trabajas con bases de datos como <b>SQL Server</b>,
+<b>PostgreSQL</b>, <b>MySQL</b> u <b>Oracle</b>.
+</p>
+
+</p> SI QUIERES CONVERTIR DE CSV a SQL,TXT a SQL O EXCEL a SQL esta pagina es tu mejor opción. </p>
+
+</div>
+</div>
+</div>
+
+<footer class="footer">
+
+<div class="container">
+
+<div class="footer-links">
+
+<a href="/contact">Contacto</a>
+<a href="/privacy">Política de privacidad</a>
+<a href="/terms">Términos de uso</a>
+
+</div>
+
+<p class="footer-text">
+Esta herramienta permite convertir archivos CSV, Excel o TXT en scripts SQL automáticamente.
+Compatible con SQL Server, PostgreSQL, MySQL y Oracle.
+</p>
+
+<p class="footer-disclaimer">
+Los archivos subidos se procesan temporalmente y se eliminan automáticamente del servidor
+después de generar el script SQL.
+</p>
+
+<p class="footer-copy">
+© 2026 Generador SQL – Herramienta gratuita para convertir datos a SQL.
+</p>
+
+</div>
+
+</footer>
+
+
+</body>
+</html>
