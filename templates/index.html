@@ -167,27 +167,8 @@ font-family: system-ui;
 min-height:100vh;
 }
 
-.main-container{
-margin-top:20px;
-min-height:calc(100vh - 160px);
-}
-
 .row{
-align-items:stretch;
-}
-
-.card-form,
-.ad-box,
-.description-box{
-height:100%;
-}
-
-.main-container{
-min-height:calc(100vh - 140px);
-}
-
-.main-container .row{
-height:100%;
+align-items:flex-start;
 }
 
 #btnGenerar{
@@ -334,6 +315,11 @@ margin-top:20px;
 font-size:13px;
 opacity:0.7;
 }
+
+.left-info-box{
+max-height:480px;
+overflow-y:auto;
+}
 </style>
 
 </head>
@@ -401,12 +387,34 @@ Genera <b>CREATE TABLE</b> o <b>INSERT INTO</b> para bases de datos SQL Server, 
 
 <div class="row">
 
+<!--
+<div class="col-lg-3">
+<div class="ad-box ad-lateral">
+PUBLICIDAD
+</div>
+</div>
+-->
 <!-- AD LATERAL -->
 <div class="col-lg-3">
 
-<div class="ad-box ad-lateral">
-PUBLICIDAD<br>
-[AD LATERAL]
+<div class="card-form left-info-box">
+
+<h4>Why use this SQL generator?</h4>
+
+<p>
+This tool allows developers and data analysts to convert CSV, Excel or TXT files into SQL scripts instantly.
+Instead of manually writing SQL statements, the generator automatically creates the queries needed to import data into your database.
+</p>
+
+<ul>
+<li>Convert CSV, Excel or TXT files into SQL</li>
+<li>Generate CREATE TABLE statements automatically</li>
+<li>Generate INSERT INTO scripts instantly</li>
+<li>Compatible with SQL Server, MySQL, PostgreSQL and Oracle</li>
+<li>No installation required</li>
+<li>Free online SQL generator</li>
+</ul>
+
 </div>
 
 </div>
