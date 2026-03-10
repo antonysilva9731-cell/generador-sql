@@ -11,6 +11,18 @@ os.makedirs("uploads", exist_ok=True)
 
 app = FastAPI()
 
+from fastapi.responses import FileResponse
+
+from fastapi.responses import FileResponse
+
+@app.get("/robots.txt")
+def robots():
+    return FileResponse("static/robots.txt", media_type="text/plain")
+
+@app.get("/sitemap.xml")
+def sitemap():
+    return FileResponse("sitemap.xml", media_type="application/xml")
+
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 templates = Jinja2Templates(directory="templates")
