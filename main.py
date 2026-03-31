@@ -27,6 +27,10 @@ def robots():
 def sitemap():
     return FileResponse("sitemap.xml", media_type="application/xml")
 
+@app.get("/ads.txt")
+def ads():
+    return FileResponse("ads.txt", media_type="text/plain")
+
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 templates = Jinja2Templates(directory="templates")

@@ -68,6 +68,12 @@ body {
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
   padding: 25px;
   background: white;
+  height: fit-content; 
+}
+
+.card-form.formulario {
+  border-top: 4px solid #56c2c6;
+  box-shadow: 0 10px 30px rgba(86,194,198,0.15);
 }
 
 .btn-generate {
@@ -260,8 +266,40 @@ input[type="file"]::file-selector-button:hover {
 .left-info-box {
   max-height: 480px;
   overflow-y: auto;
+  height: fit-content; 
 }
 
+.upload-box {
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.upload-box:hover {
+  border-color: #56c2c6;
+}
+
+.upload-icon {
+  font-size: 24px;
+}
+
+.upload-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1e3a5f;
+}
+
+.upload-sub {
+  font-size: 12px;
+  color: #888;
+  margin-top: 2px;
+}
 </style>
 
 </head>
@@ -336,14 +374,21 @@ input[type="file"]::file-selector-button:hover {
 
     <!-- FORMULARIO -->
     <div class="col-lg-5">
-      <div class="card-form">
+      <div class="card-form formulario">   
 
         <form id="formSQL" action="/generar" method="post" enctype="multipart/form-data" onsubmit="return iniciarProceso(event)">
 
-          <div class="mb-3">
-            <label class="form-label">Subir archivo</label>
-            <input type="file" class="form-control" name="file" id="archivo" required>
-          </div>
+<div class="mb-3">
+  <label class="form-label">Subir archivo</label>
+  <div class="upload-box" onclick="document.getElementById('archivo').click()">
+    <span class="upload-icon">📂</span>
+    <div>
+      <div class="upload-text" id="uploadText">Seleccionar archivo</div>
+      <div class="upload-sub">CSV, Excel o TXT · Máx. 5MB</div>
+    </div>
+  </div>
+  <input type="file" class="form-control" name="file" id="archivo" required style="display:none">
+</div>
 
           <div class="mb-3">
             <label class="form-label">Nombre de la tabla</label>
@@ -558,6 +603,7 @@ function toggleComoFunciona(){
 document.getElementById("archivo").addEventListener("change", function(){
   const archivo = this.files[0];
   if (!archivo) return;
+  document.getElementById("uploadText").innerText = archivo.name;
   const extensionesPermitidas = ["csv","xlsx","txt"];
   const extension = archivo.name.split(".").pop().toLowerCase();
   if (!extensionesPermitidas.includes(extension)){
