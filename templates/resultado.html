@@ -1,49 +1,79 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
 <meta charset="UTF-8">
-<title>Archivo SQL generado</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Script SQL generado – Descarga tu archivo | Generador SQL</title>
+<meta name="description" content="Tu script SQL ha sido generado correctamente. Descarga el archivo SQL listo para usar en SQL Server, PostgreSQL, MySQL u Oracle.">
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/png" href="/static/logo_sql.png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
+<style>
+body { background: linear-gradient(180deg,#f6f8fb,#eef3f8); font-family: system-ui; min-height:100vh; }
+.header { background:#1e3a5f; color:white; padding:15px 30px; display:flex; justify-content:space-between; align-items:center; }
+.header h1 { font-size:24px; margin:0; }
+.footer { background:#1e3a5f; color:white; padding:40px 0; margin-top:60px; text-align:center; }
+.footer-links a { color:#e9f1f8; margin:0 15px; text-decoration:none; font-size:15px; }
+.footer-links a:hover { text-decoration:underline; }
+.footer-copy { margin-top:20px; font-size:13px; opacity:0.7; }
+</style>
 </head>
+<body>
 
-<body class="bg-light">
+<div class="header">
+  <div style="display:flex;align-items:center;gap:12px;">
+    <img src="/static/logo_sql.png" style="height:40px">
+    <h1><a href="/" style="color:white;text-decoration:none;">Generador SQL</a></h1>
+  </div>
+</div>
 
 <div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 text-center">
 
-<div class="row justify-content-center">
+      <h1 class="mb-4">¡Script SQL generado!</h1>
 
-<div class="col-lg-6 text-center">
+      <div class="card shadow p-4" style="border-radius:15px;">
 
-<h1 class="mb-4">Archivo SQL generado</h1>
+        <div class="mb-3">
+          <span style="font-size:48px;">✅</span>
+        </div>
 
-<div class="card shadow">
+        <p class="lead">Tu archivo está listo para descargar.</p>
 
-<div class="card-body">
+        <a href="/descargar/{{ archivo_sql }}" class="btn btn-success btn-lg mb-3">
+          Descargar archivo .sql
+        </a>
 
-<p>Tu archivo está listo para descargar.</p>
+        <a href="/nuevo/{{ archivo_sql }}" class="btn btn-outline-secondary">
+          Convertir otro archivo
+        </a>
 
-<a href="/descargar/{{ archivo_sql }}" class="btn btn-success btn-lg">
-Descargar archivo .sql
-</a>
+      </div>
 
-<br><br>
+      <div class="card shadow-sm p-4 mt-4 text-start" style="border-radius:12px;">
+        <h2 class="h6 mb-3">💡 ¿Cómo usar tu script SQL?</h2>
+        <ul class="mb-0" style="font-size:15px;">
+          <li>Abre tu gestor de base de datos (SQL Server Management Studio, DBeaver, pgAdmin, etc.)</li>
+          <li>Abre el archivo <code>.sql</code> descargado</li>
+          <li>Ejecuta el script en tu base de datos</li>
+        </ul>
+      </div>
 
-<a href="/nuevo/{{ archivo_sql }}" class="btn btn-secondary">
-Generar otro archivo
-</a>
-
+    </div>
+  </div>
 </div>
 
-</div>
-
-</div>
-
-</div>
-
-</div>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links mb-3">
+      <a href="/contact">Contacto</a>
+      <a href="/privacy">Política de privacidad</a>
+      <a href="/terms">Términos de uso</a>
+    </div>
+    <p class="footer-copy">© 2026 Generador SQL – generadorsql.com</p>
+  </div>
+</footer>
 
 </body>
 </html>

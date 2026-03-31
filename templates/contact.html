@@ -1,41 +1,73 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
 <meta charset="UTF-8">
-<title>Contacto - Generador SQL</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto – Generador SQL</title>
+<meta name="description" content="Contáctanos para preguntas, sugerencias o reportes sobre el Generador SQL. Herramienta gratuita para convertir CSV, Excel y TXT a SQL.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://generadorsql.com/contact">
+<link rel="icon" type="image/png" href="/static/logo_sql.png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
+<style>
+body { background: linear-gradient(180deg,#f6f8fb,#eef3f8); font-family: system-ui; }
+.header { background:#1e3a5f; color:white; padding:15px 30px; display:flex; justify-content:space-between; align-items:center; }
+.header h1 { font-size:24px; margin:0; }
+.footer { background:#1e3a5f; color:white; padding:40px 0; margin-top:60px; text-align:center; }
+.footer-links a { color:#e9f1f8; margin:0 15px; text-decoration:none; font-size:15px; }
+.footer-links a:hover { text-decoration:underline; }
+.footer-copy { margin-top:20px; font-size:13px; opacity:0.7; }
+</style>
 </head>
+<body>
 
-<body class="bg-light">
+<div class="header">
+  <div style="display:flex;align-items:center;gap:12px;">
+    <img src="/static/logo_sql.png" style="height:40px">
+    <h1><a href="/" style="color:white;text-decoration:none;">Generador SQL</a></h1>
+  </div>
+</div>
 
-<div class="container mt-5">
+<div class="container mt-5" style="max-width:800px;">
 
-<h1>Contacto</h1>
+  <h1 class="mb-4">Contacto</h1>
 
-<p>
-Si tienes preguntas, sugerencias o reportes de errores sobre esta herramienta
-puedes escribirnos al siguiente correo:
-</p>
+  <p class="lead">¿Tienes preguntas, sugerencias o encontraste algún error en la herramienta? Escríbenos, intentamos responder a todas las consultas a la brevedad posible.</p>
 
-<p>
-<b>Email:</b>
-<a href="mailto:sobrevivealunes@outlook.com">
-sobrevivealunes@outlook.com
-</a>
-</p>
+  <div class="card shadow-sm p-4 mt-4" style="border-radius:12px;">
 
-<p>
-Intentamos responder a todas las consultas en el menor tiempo posible.
-</p>
+    <h2 class="h5 mb-3">Correo electrónico</h2>
+    <p>
+      <strong>Email:</strong>
+      <a href="mailto:sobrevivealunes@outlook.com">sobrevivealunes@outlook.com</a>
+    </p>
 
-<a href="/" class="btn btn-primary mt-3">
-Volver a la herramienta
-</a>
+    <hr>
+
+    <h2 class="h5 mb-3 mt-3">¿Sobre qué puedes escribirnos?</h2>
+    <ul>
+      <li>Reportar errores en la generación de scripts SQL</li>
+      <li>Sugerencias de nuevas funcionalidades</li>
+      <li>Preguntas sobre los tipos de archivos soportados</li>
+      <li>Consultas sobre publicidad o colaboraciones</li>
+    </ul>
+
+  </div>
+
+  <a href="/" class="btn btn-primary mt-4 mb-5">Volver a la herramienta</a>
 
 </div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links mb-3">
+      <a href="/contact">Contacto</a>
+      <a href="/privacy">Política de privacidad</a>
+      <a href="/terms">Términos de uso</a>
+    </div>
+    <p class="footer-copy">© 2026 Generador SQL – generadorsql.com</p>
+  </div>
+</footer>
 
 </body>
 </html>
