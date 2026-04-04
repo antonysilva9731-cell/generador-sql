@@ -15,13 +15,13 @@
   gtag('config', 'G-8Q3H3CK09V');
 </script>
 
-<title>Convierte archivos a SQL – Gratis y en línea | generadorsql.com</title>
+<title>Convierte Excel, CSV o TXT a consultas SQL – INSERT INTO o CREATE TABLE</title>
 <meta name="description" content="Convierte archivos CSV, Excel o TXT en scripts SQL automáticamente. Genera sentencias CREATE TABLE o INSERT INTO para SQL Server, PostgreSQL, MySQL u Oracle. Generador SQL gratis en línea.">
 <meta name="keywords" content="generador sql, csv to sql, convertir csv a sql, excel a sql, csv a insert sql, crear tabla sql, generar sql gratis">
 <meta name="robots" content="index, follow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="canonical" href="https://generadorsql.com">
-<link rel="icon" type="image/png" href="/static/logo_sql.png">
+<link rel="icon" type="image/png" href="/static/favicon.png">
 
 <!-- Open Graph -->
 <meta property="og:title" content="Generador SQL – Convierte CSV, Excel y TXT a SQL gratis">
@@ -53,10 +53,18 @@ body {
   margin: 0;
 }
 
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(86,194,198,0.6); }
+  70% { box-shadow: 0 0 0 10px rgba(86,194,198,0); }
+  100% { box-shadow: 0 0 0 0 rgba(86,194,198,0); }
+}
+
 .btn-info {
-  background: #e9f1f8;
-  border: none;
-  color: #1e3a5f;
+  animation: pulse 2s infinite;
+}
+
+.upload-box {
+  animation: pulse 2s infinite;
 }
 
 .main-container {
@@ -314,6 +322,7 @@ input[type="file"]::file-selector-button:hover {
   background: white;
   overflow: hidden;
   padding: 0;
+  height: fit-content;
 }
 
 .left-info-content {
@@ -371,31 +380,20 @@ input[type="file"]::file-selector-button:hover {
   <div class="row">
 
     <!-- INFO LATERAL -->
-    <div class="col-lg-3">
+    <div class="col-lg-3" style="align-self:flex-start;">
       <div class="left-info-box">
-        <div class="left-info-content">
-          <h4>¿Por qué usar este Generador SQL?</h4>
-          <p>
-            Esta herramienta permite a desarrolladores y analistas de datos convertir archivos CSV, Excel o TXT
-            en scripts SQL al instante. En lugar de escribir manualmente las sentencias SQL, el generador
-            crea automáticamente las consultas necesarias para importar los datos a la base de datos.
-          </p>
-          <ul>
-            <li>Convierte archivos CSV, Excel o TXT en SQL.</li>
-            <li>Genera sentencias CREATE TABLE automáticamente.</li>
-            <li>Genera scripts INSERT INTO al instante.</li>
-            <li>Compatible con SQL Server, MySQL, PostgreSQL y Oracle.</li>
-            <li>No requiere instalación adicional.</li>
-            <li>Generador SQL gratis en línea.</li>
-          </ul>
-        </div>
+<div style="padding:20px 20px 10px 20px;">
+  <h4>Generador SQL Gratis</h4>
+  <p style="font-size:15px;line-height:1.6;">Convierte archivos CSV, Excel o TXT a sentencias SQL en segundos, sin registro ni instalación.</p>
+  <p style="font-size:15px;line-height:1.6;">Compatible con SQL Server, MySQL, PostgreSQL y Oracle.</p>
+</div>
         <!-- ANUNCIO 1 — Lateral izquierdo -->
         <div class="ad-slot">
           <ins class="adsbygoogle"
                style="display:block"
                data-ad-client="ca-pub-6203943947855417"
-               data-ad-slot="1581590886"
-               data-ad-format="auto"
+               data-ad-slot="8015866245"
+               data-ad-format="rectangle"
                data-full-width-responsive="true"></ins>
           <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
@@ -464,19 +462,12 @@ input[type="file"]::file-selector-button:hover {
     <!-- DESCRIPCIÓN -->
     <div class="col-lg-4 description-box">
       <div class="card-form">
-        <h4>Convierte datos en SQL fácilmente</h4>
-        <p>
-          Sube un archivo CSV, Excel o TXT y genera automáticamente scripts SQL listos para usar.
-        </p>
-        <p>Úsalo para:</p>
-        <ul>
-          <li>Pruebas de bases de datos</li>
-          <li>Clases universitarias</li>
-          <li>Generar datasets de prueba</li>
-          <li>Importar datos rápidamente</li>
-        </ul>
+
         <h4>HERRAMIENTA GRATUITA</h4>
-        <p>No requiere instalaciones adicionales ni suscripciones a ninguna plataforma.</p>
+        <p>No requiere instalaciones adicionales, creaciones de cuentas
+           ni suscripciones a ninguna plataforma.
+                
+        </p>
         <!-- ANUNCIO 2 — Lateral derecho -->
         <div class="ad-slot mt-3">
           <ins class="adsbygoogle"
