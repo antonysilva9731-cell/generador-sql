@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6203943947855417" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cómo importar un archivo CSV a SQL Server – Guía paso a paso</title>
+<meta name="description" content="Aprende a importar archivos CSV a SQL Server paso a paso. Guía completa con ejemplos de código SQL, sentencias INSERT INTO y CREATE TABLE generadas automáticamente.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://generadorsql.com/guias/como-importar-csv-a-sql-server">
+<link rel="icon" type="image/png" href="/static/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+body { background: linear-gradient(180deg,#f6f8fb,#eef3f8); font-family: system-ui; min-height:100vh; }
+.header { background:#1e3a5f; color:white; padding:15px 30px; display:flex; justify-content:space-between; align-items:center; }
+.header h1 { font-size:24px; margin:0; }
+.content { max-width:860px; margin:40px auto; padding:0 20px; }
+.content h1 { font-size:32px; color:#1e3a5f; margin-bottom:10px; }
+.content h2 { font-size:24px; color:#1e3a5f; margin-top:35px; margin-bottom:12px; }
+.content h3 { font-size:20px; color:#1e3a5f; margin-top:25px; }
+.content p { font-size:16px; line-height:1.8; color:#333; }
+.content ul, .content ol { font-size:16px; line-height:1.9; color:#333; }
+.content pre { background:#1e3a5f; color:#e9f1f8; padding:20px; border-radius:10px; font-size:14px; overflow-x:auto; }
+.cta-box { background:linear-gradient(90deg,#56c2c6,#6ed3b5); border-radius:12px; padding:25px; text-align:center; margin:35px 0; }
+.cta-box h3 { color:white; margin:0 0 10px 0; }
+.cta-box p { color:white; margin:0 0 15px 0; }
+.cta-box a { background:white; color:#1e3a5f; font-weight:700; padding:10px 25px; border-radius:8px; text-decoration:none; }
+.footer { background:#1e3a5f; color:white; padding:40px 0; margin-top:60px; text-align:center; }
+.footer-links a { color:#e9f1f8; margin:0 15px; text-decoration:none; font-size:15px; }
+.footer-copy { margin-top:20px; font-size:13px; opacity:0.7; }
+.ad-slot { background:#f8f9fa; border-radius:8px; overflow:hidden; margin:30px 0; }
+.breadcrumb-nav { font-size:14px; color:#888; margin-bottom:20px; }
+.breadcrumb-nav a { color:#56c2c6; text-decoration:none; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="display:flex;align-items:center;gap:12px;">
+    <img src="/static/favicon.png" style="height:40px;border-radius:6px;">
+    <h1><a href="/" style="color:white;text-decoration:none;">Generador SQL</a></h1>
+  </div>
+  <a href="/" class="btn" style="background:#e9f1f8;color:#1e3a5f;font-weight:500;">Ir a la herramienta</a>
+</div>
+
+<div class="content">
+
+  <div class="breadcrumb-nav">
+    <a href="/">Inicio</a> › <a href="/guias">Guías</a> › Cómo importar CSV a SQL Server
+  </div>
+
+  <h1>Cómo importar un archivo CSV a SQL Server – Guía paso a paso</h1>
+  <p style="color:#888;font-size:14px;">Actualizado: abril 2026 · 6 min de lectura</p>
+
+  <p>Importar datos desde un archivo CSV a SQL Server es una tarea muy común para desarrolladores y analistas de datos. Ya sea que tengas un archivo exportado desde Excel, un sistema ERP o cualquier otra fuente, convertir esos datos en sentencias SQL te permite cargarlos rápidamente en tu base de datos.</p>
+
+  <p>En esta guía te explicamos dos métodos: el manual escribiendo SQL directamente, y el automático usando una herramienta en línea que genera el script por ti.</p>
+
+  <!-- ANUNCIO -->
+  <div class="ad-slot">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6203943947855417" data-ad-slot="2699231438" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <h2>¿Qué es un archivo CSV?</h2>
+  <p>Un archivo CSV (Comma-Separated Values) es un formato de texto plano donde cada fila representa un registro y las columnas están separadas por un delimitador, normalmente una coma (<code>,</code>) o punto y coma (<code>;</code>). Es el formato más común para exportar datos desde Excel, Google Sheets o sistemas de gestión empresarial.</p>
+
+  <p>Por ejemplo, un archivo <strong>clientes.csv</strong> podría verse así:</p>
+
+  <pre>id,nombre,email,ciudad
+1,Ana García,ana@email.com,Madrid
+2,Carlos López,carlos@email.com,Bogotá
+3,María Torres,maria@email.com,Ciudad de México</pre>
+
+  <h2>Método 1: Generar el script SQL automáticamente</h2>
+  <p>La forma más rápida de importar un CSV a SQL Server es usar una herramienta que genere automáticamente las sentencias SQL a partir del archivo. Esto evita tener que escribir manualmente cada instrucción INSERT INTO o CREATE TABLE.</p>
+
+  <div class="cta-box">
+    <h3>Convierte tu CSV a SQL en segundos</h3>
+    <p>Sube tu archivo y obtén el script SQL listo para ejecutar en SQL Server, MySQL, PostgreSQL u Oracle.</p>
+    <a href="/">Usar el Generador SQL gratis →</a>
+  </div>
+
+  <p>El proceso es simple:</p>
+  <ol>
+    <li>Sube tu archivo CSV, Excel o TXT al generador.</li>
+    <li>Escribe el nombre de la tabla donde quieres importar los datos.</li>
+    <li>Selecciona <strong>SQL Server</strong> como base de datos.</li>
+    <li>Elige si quieres generar un <strong>CREATE TABLE</strong> o un <strong>INSERT INTO</strong>.</li>
+    <li>Descarga el script SQL generado.</li>
+  </ol>
+
+  <h2>Método 2: Escribir el SQL manualmente</h2>
+  <p>Si prefieres hacerlo manualmente, necesitas seguir dos pasos: primero crear la tabla y luego insertar los datos.</p>
+
+  <h3>Paso 1: Crear la tabla con CREATE TABLE</h3>
+  <p>Antes de insertar datos necesitas crear la estructura de la tabla en SQL Server. Basándonos en el ejemplo del CSV de clientes:</p>
+
+  <pre>CREATE TABLE clientes (
+  id INT,
+  nombre VARCHAR(100),
+  email VARCHAR(100),
+  ciudad VARCHAR(50)
+);</pre>
+
+  <h3>Paso 2: Insertar los datos con INSERT INTO</h3>
+  <p>Una vez creada la tabla, puedes insertar los registros del CSV usando sentencias INSERT INTO:</p>
+
+  <pre>INSERT INTO clientes (id, nombre, email, ciudad)
+VALUES (1, 'Ana García', 'ana@email.com', 'Madrid');
+
+INSERT INTO clientes (id, nombre, email, ciudad)
+VALUES (2, 'Carlos López', 'carlos@email.com', 'Bogotá');
+
+INSERT INTO clientes (id, nombre, email, ciudad)
+VALUES (3, 'María Torres', 'maria@email.com', 'Ciudad de México');</pre>
+
+  <h2>Método 3: Usar el Asistente de importación de SQL Server</h2>
+  <p>SQL Server Management Studio (SSMS) incluye un asistente visual para importar archivos planos directamente:</p>
+  <ol>
+    <li>Abre SSMS y conéctate a tu servidor.</li>
+    <li>Haz clic derecho sobre la base de datos → <strong>Tasks → Import Flat File</strong>.</li>
+    <li>Selecciona el archivo CSV.</li>
+    <li>Configura el nombre de la tabla y los tipos de datos.</li>
+    <li>Ejecuta la importación.</li>
+  </ol>
+
+  <p>Este método es útil para archivos muy grandes, pero para archivos pequeños y medianos el método de script SQL es más flexible y portable.</p>
+
+  <h2>Errores comunes al importar CSV a SQL Server</h2>
+  <ul>
+    <li><strong>Encoding incorrecto:</strong> Si tu CSV tiene caracteres especiales (acentos, ñ), asegúrate de guardarlo en UTF-8.</li>
+    <li><strong>Tipos de datos incompatibles:</strong> Si una columna numérica tiene valores vacíos, SQL Server puede dar error. Usa NULL en lugar de dejar el campo vacío.</li>
+    <li><strong>Delimitador incorrecto:</strong> Algunos CSV usan punto y coma en lugar de coma. Verifica el delimitador antes de importar.</li>
+    <li><strong>Nombres de columnas con espacios:</strong> Evita espacios en los nombres de columnas. Usa guion bajo: <code>nombre_cliente</code> en lugar de <code>nombre cliente</code>.</li>
+  </ul>
+
+  <!-- ANUNCIO -->
+  <div class="ad-slot">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6203943947855417" data-ad-slot="2328425295" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <h2>Conclusión</h2>
+  <p>Importar un archivo CSV a SQL Server es un proceso sencillo si tienes las herramientas correctas. Para archivos pequeños y medianos, generar el script SQL automáticamente es la opción más rápida y eficiente. Para archivos grandes, el asistente de importación de SSMS es la mejor alternativa.</p>
+
+  <div class="cta-box">
+    <h3>¿Tienes un CSV listo para importar?</h3>
+    <p>Usa nuestro generador gratuito y obtén el script SQL en segundos.</p>
+    <a href="/">Generar script SQL ahora →</a>
+  </div>
+
+  <h2>Artículos relacionados</h2>
+  <ul>
+    <li><a href="/guias/que-es-insert-into-sql" style="color:#56c2c6;">¿Qué es INSERT INTO en SQL y cómo se usa?</a></li>
+    <li><a href="/guias/diferencia-csv-excel-txt-bases-de-datos" style="color:#56c2c6;">Diferencias entre CSV, Excel y TXT para bases de datos</a></li>
+    <li><a href="/guias/como-crear-tabla-mysql" style="color:#56c2c6;">Cómo crear una tabla en MySQL desde cero</a></li>
+  </ul>
+
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links mb-3">
+      <a href="/">Herramienta</a>
+      <a href="/guias">Guías</a>
+      <a href="/contact">Contacto</a>
+      <a href="/privacy">Privacidad</a>
+      <a href="/terms">Términos</a>
+    </div>
+    <p class="footer-copy">© 2026 Generador SQL – generadorsql.com</p>
+  </div>
+</footer>
+
+</body>
+</html>

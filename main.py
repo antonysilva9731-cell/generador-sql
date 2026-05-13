@@ -132,3 +132,27 @@ async def privacy(request: Request):
 @app.get("/terms", response_class=HTMLResponse)
 async def terms(request: Request):
     return templates.TemplateResponse("terms.html", {"request": request})
+
+# ===================================================
+# RUTAS DE GUÍAS — agregar en main.py
+# ===================================================
+
+@app.get("/guias", response_class=HTMLResponse)
+async def guias(request: Request):
+    return templates.TemplateResponse("guias/index.html", {"request": request})
+
+@app.get("/guias/como-importar-csv-a-sql-server", response_class=HTMLResponse)
+async def guia_csv_sql_server(request: Request):
+    return templates.TemplateResponse("guias/como-importar-csv-a-sql-server.html", {"request": request})
+
+@app.get("/guias/que-es-insert-into-sql", response_class=HTMLResponse)
+async def guia_insert_into(request: Request):
+    return templates.TemplateResponse("guias/que-es-insert-into-sql.html", {"request": request})
+
+@app.get("/guias/diferencia-csv-excel-txt-bases-de-datos", response_class=HTMLResponse)
+async def guia_diferencias(request: Request):
+    return templates.TemplateResponse("guias/diferencia-csv-excel-txt-bases-de-datos.html", {"request": request})
+
+@app.get("/guias/como-crear-tabla-mysql", response_class=HTMLResponse)
+async def guia_create_table(request: Request):
+    return templates.TemplateResponse("guias/como-crear-tabla-mysql.html", {"request": request})

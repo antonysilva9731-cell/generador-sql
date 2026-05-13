@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6203943947855417" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cómo crear una tabla en MySQL desde cero – Guía con ejemplos</title>
+<meta name="description" content="Aprende a crear tablas en MySQL con CREATE TABLE. Guía completa con ejemplos de tipos de datos, claves primarias, restricciones y cómo generar el script automáticamente.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://generadorsql.com/guias/como-crear-tabla-mysql">
+<link rel="icon" type="image/png" href="/static/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+body { background: linear-gradient(180deg,#f6f8fb,#eef3f8); font-family: system-ui; min-height:100vh; }
+.header { background:#1e3a5f; color:white; padding:15px 30px; display:flex; justify-content:space-between; align-items:center; }
+.header h1 { font-size:24px; margin:0; }
+.content { max-width:860px; margin:40px auto; padding:0 20px; }
+.content h1 { font-size:32px; color:#1e3a5f; margin-bottom:10px; }
+.content h2 { font-size:24px; color:#1e3a5f; margin-top:35px; margin-bottom:12px; }
+.content h3 { font-size:20px; color:#1e3a5f; margin-top:25px; }
+.content p { font-size:16px; line-height:1.8; color:#333; }
+.content ul, .content ol { font-size:16px; line-height:1.9; color:#333; }
+.content pre { background:#1e3a5f; color:#e9f1f8; padding:20px; border-radius:10px; font-size:14px; overflow-x:auto; }
+.cta-box { background:linear-gradient(90deg,#56c2c6,#6ed3b5); border-radius:12px; padding:25px; text-align:center; margin:35px 0; }
+.cta-box h3 { color:white; margin:0 0 10px 0; }
+.cta-box p { color:white; margin:0 0 15px 0; }
+.cta-box a { background:white; color:#1e3a5f; font-weight:700; padding:10px 25px; border-radius:8px; text-decoration:none; }
+.footer { background:#1e3a5f; color:white; padding:40px 0; margin-top:60px; text-align:center; }
+.footer-links a { color:#e9f1f8; margin:0 15px; text-decoration:none; font-size:15px; }
+.footer-copy { margin-top:20px; font-size:13px; opacity:0.7; }
+.ad-slot { background:#f8f9fa; border-radius:8px; overflow:hidden; margin:30px 0; }
+.breadcrumb-nav { font-size:14px; color:#888; margin-bottom:20px; }
+.breadcrumb-nav a { color:#56c2c6; text-decoration:none; }
+.tip-box { background:#e8f8f5; border-left:4px solid #56c2c6; padding:15px 20px; border-radius:0 8px 8px 0; margin:20px 0; }
+.tip-box p { margin:0; font-size:15px; }
+.data-table { width:100%; border-collapse:collapse; margin:20px 0; font-size:15px; }
+.data-table th { background:#1e3a5f; color:white; padding:11px 15px; text-align:left; }
+.data-table td { padding:10px 15px; border-bottom:1px solid #e0e0e0; background:white; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="display:flex;align-items:center;gap:12px;">
+    <img src="/static/favicon.png" style="height:40px;border-radius:6px;">
+    <h1><a href="/" style="color:white;text-decoration:none;">Generador SQL</a></h1>
+  </div>
+  <a href="/" class="btn" style="background:#e9f1f8;color:#1e3a5f;font-weight:500;">Ir a la herramienta</a>
+</div>
+
+<div class="content">
+
+  <div class="breadcrumb-nav">
+    <a href="/">Inicio</a> › <a href="/guias">Guías</a> › Cómo crear una tabla en MySQL
+  </div>
+
+  <h1>Cómo crear una tabla en MySQL desde cero</h1>
+  <p style="color:#888;font-size:14px;">Actualizado: abril 2026 · 6 min de lectura</p>
+
+  <p>Crear una tabla es uno de los primeros pasos al trabajar con bases de datos. En MySQL (y en cualquier base de datos SQL) se usa la sentencia <strong>CREATE TABLE</strong> para definir la estructura de una tabla: sus columnas, tipos de datos y restricciones.</p>
+
+  <!-- ANUNCIO -->
+  <div class="ad-slot">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6203943947855417" data-ad-slot="2699231438" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <h2>Sintaxis básica de CREATE TABLE</h2>
+  <pre>CREATE TABLE nombre_tabla (
+  columna1 tipo_dato restricciones,
+  columna2 tipo_dato restricciones,
+  columna3 tipo_dato restricciones
+);</pre>
+
+  <h2>Ejemplo básico: Crear una tabla de clientes</h2>
+  <pre>CREATE TABLE clientes (
+  id INT,
+  nombre VARCHAR(100),
+  email VARCHAR(100),
+  ciudad VARCHAR(50),
+  fecha_registro DATE
+);</pre>
+
+  <h2>Tipos de datos más comunes en MySQL</h2>
+
+  <table class="data-table">
+    <tr>
+      <th>Tipo de dato</th>
+      <th>Descripción</th>
+      <th>Ejemplo</th>
+    </tr>
+    <tr>
+      <td><code>INT</code></td>
+      <td>Número entero</td>
+      <td>1, 100, -5</td>
+    </tr>
+    <tr>
+      <td><code>DECIMAL(p,s)</code></td>
+      <td>Número decimal con precisión</td>
+      <td>1200.50</td>
+    </tr>
+    <tr>
+      <td><code>VARCHAR(n)</code></td>
+      <td>Texto de longitud variable</td>
+      <td>'Ana García'</td>
+    </tr>
+    <tr>
+      <td><code>TEXT</code></td>
+      <td>Texto largo</td>
+      <td>Descripciones largas</td>
+    </tr>
+    <tr>
+      <td><code>DATE</code></td>
+      <td>Fecha (YYYY-MM-DD)</td>
+      <td>'2026-04-14'</td>
+    </tr>
+    <tr>
+      <td><code>DATETIME</code></td>
+      <td>Fecha y hora</td>
+      <td>'2026-04-14 10:30:00'</td>
+    </tr>
+    <tr>
+      <td><code>BOOLEAN</code></td>
+      <td>Verdadero o falso</td>
+      <td>TRUE, FALSE</td>
+    </tr>
+  </table>
+
+  <h2>Crear tabla con clave primaria</h2>
+  <p>La clave primaria identifica de forma única cada registro. Se recomienda siempre definirla:</p>
+  <pre>CREATE TABLE productos (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(100) NOT NULL,
+  precio DECIMAL(10,2) NOT NULL,
+  stock INT DEFAULT 0
+);</pre>
+
+  <div class="tip-box">
+    <p>💡 <code>AUTO_INCREMENT</code> hace que MySQL asigne automáticamente el ID. <code>NOT NULL</code> obliga a que el campo tenga valor. <code>DEFAULT 0</code> asigna 0 si no se especifica un valor.</p>
+  </div>
+
+  <h2>Crear tabla con IF NOT EXISTS</h2>
+  <p>Para evitar errores si la tabla ya existe, usa <code>IF NOT EXISTS</code>:</p>
+  <pre>CREATE TABLE IF NOT EXISTS productos (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(100) NOT NULL,
+  precio DECIMAL(10,2)
+);</pre>
+
+  <!-- ANUNCIO -->
+  <div class="ad-slot">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6203943947855417" data-ad-slot="2328425295" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <h2>¿Cómo generar CREATE TABLE automáticamente desde un CSV?</h2>
+  <p>Si tienes los datos en un archivo CSV o Excel, no necesitas escribir el CREATE TABLE manualmente. Una herramienta generadora de SQL analiza las columnas y tipos de datos del archivo y crea el script por ti.</p>
+
+  <div class="cta-box">
+    <h3>Genera CREATE TABLE desde tu archivo</h3>
+    <p>Sube tu CSV, Excel o TXT y obtén el CREATE TABLE listo para ejecutar en MySQL, SQL Server, PostgreSQL u Oracle.</p>
+    <a href="/">Generar CREATE TABLE gratis →</a>
+  </div>
+
+  <h2>CREATE TABLE en otros motores de bases de datos</h2>
+
+  <h3>SQL Server</h3>
+  <pre>CREATE TABLE empleados (
+  id INT IDENTITY(1,1) PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL,
+  salario DECIMAL(18,2)
+);</pre>
+
+  <h3>PostgreSQL</h3>
+  <pre>CREATE TABLE empleados (
+  id SERIAL PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL,
+  salario DECIMAL(18,2)
+);</pre>
+
+  <h3>Oracle</h3>
+  <pre>CREATE TABLE empleados (
+  id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  nombre VARCHAR2(100) NOT NULL,
+  salario NUMBER(18,2)
+);</pre>
+
+  <h2>Conclusión</h2>
+  <p>Crear tablas en MySQL es sencillo una vez que dominas la sintaxis de CREATE TABLE y los tipos de datos disponibles. Para proyectos donde tienes datos en archivos CSV o Excel, generar el CREATE TABLE automáticamente te ahorra tiempo y reduce errores.</p>
+
+  <h2>Artículos relacionados</h2>
+  <ul>
+    <li><a href="/guias/como-importar-csv-a-sql-server" style="color:#56c2c6;">Cómo importar un archivo CSV a SQL Server</a></li>
+    <li><a href="/guias/que-es-insert-into-sql" style="color:#56c2c6;">¿Qué es INSERT INTO en SQL y cómo se usa?</a></li>
+    <li><a href="/guias/diferencia-csv-excel-txt-bases-de-datos" style="color:#56c2c6;">Diferencias entre CSV, Excel y TXT para bases de datos</a></li>
+  </ul>
+
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links mb-3">
+      <a href="/">Herramienta</a>
+      <a href="/guias">Guías</a>
+      <a href="/contact">Contacto</a>
+      <a href="/privacy">Privacidad</a>
+      <a href="/terms">Términos</a>
+    </div>
+    <p class="footer-copy">© 2026 Generador SQL – generadorsql.com</p>
+  </div>
+</footer>
+
+</body>
+</html>

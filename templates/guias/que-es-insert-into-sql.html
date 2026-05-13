@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6203943947855417" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Qué es INSERT INTO en SQL y cómo se usa? – Guía con ejemplos</title>
+<meta name="description" content="Aprende qué es INSERT INTO en SQL, cómo funciona y cómo usarlo con ejemplos prácticos. Inserta datos en SQL Server, MySQL, PostgreSQL y Oracle.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://generadorsql.com/guias/que-es-insert-into-sql">
+<link rel="icon" type="image/png" href="/static/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+body { background: linear-gradient(180deg,#f6f8fb,#eef3f8); font-family: system-ui; min-height:100vh; }
+.header { background:#1e3a5f; color:white; padding:15px 30px; display:flex; justify-content:space-between; align-items:center; }
+.header h1 { font-size:24px; margin:0; }
+.content { max-width:860px; margin:40px auto; padding:0 20px; }
+.content h1 { font-size:32px; color:#1e3a5f; margin-bottom:10px; }
+.content h2 { font-size:24px; color:#1e3a5f; margin-top:35px; margin-bottom:12px; }
+.content h3 { font-size:20px; color:#1e3a5f; margin-top:25px; }
+.content p { font-size:16px; line-height:1.8; color:#333; }
+.content ul, .content ol { font-size:16px; line-height:1.9; color:#333; }
+.content pre { background:#1e3a5f; color:#e9f1f8; padding:20px; border-radius:10px; font-size:14px; overflow-x:auto; }
+.cta-box { background:linear-gradient(90deg,#56c2c6,#6ed3b5); border-radius:12px; padding:25px; text-align:center; margin:35px 0; }
+.cta-box h3 { color:white; margin:0 0 10px 0; }
+.cta-box p { color:white; margin:0 0 15px 0; }
+.cta-box a { background:white; color:#1e3a5f; font-weight:700; padding:10px 25px; border-radius:8px; text-decoration:none; }
+.footer { background:#1e3a5f; color:white; padding:40px 0; margin-top:60px; text-align:center; }
+.footer-links a { color:#e9f1f8; margin:0 15px; text-decoration:none; font-size:15px; }
+.footer-copy { margin-top:20px; font-size:13px; opacity:0.7; }
+.ad-slot { background:#f8f9fa; border-radius:8px; overflow:hidden; margin:30px 0; }
+.breadcrumb-nav { font-size:14px; color:#888; margin-bottom:20px; }
+.breadcrumb-nav a { color:#56c2c6; text-decoration:none; }
+.tip-box { background:#e8f8f5; border-left:4px solid #56c2c6; padding:15px 20px; border-radius:0 8px 8px 0; margin:20px 0; }
+.tip-box p { margin:0; font-size:15px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="display:flex;align-items:center;gap:12px;">
+    <img src="/static/favicon.png" style="height:40px;border-radius:6px;">
+    <h1><a href="/" style="color:white;text-decoration:none;">Generador SQL</a></h1>
+  </div>
+  <a href="/" class="btn" style="background:#e9f1f8;color:#1e3a5f;font-weight:500;">Ir a la herramienta</a>
+</div>
+
+<div class="content">
+
+  <div class="breadcrumb-nav">
+    <a href="/">Inicio</a> › <a href="/guias">Guías</a> › ¿Qué es INSERT INTO en SQL?
+  </div>
+
+  <h1>¿Qué es INSERT INTO en SQL y cómo se usa?</h1>
+  <p style="color:#888;font-size:14px;">Actualizado: abril 2026 · 5 min de lectura</p>
+
+  <p>La sentencia <strong>INSERT INTO</strong> es uno de los comandos más fundamentales del lenguaje SQL. Permite agregar nuevos registros (filas) a una tabla de una base de datos. Si estás aprendiendo SQL o necesitas cargar datos desde un archivo CSV o Excel, entender INSERT INTO es imprescindible.</p>
+
+  <!-- ANUNCIO -->
+  <div class="ad-slot">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6203943947855417" data-ad-slot="2699231438" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <h2>Sintaxis básica de INSERT INTO</h2>
+  <p>La sintaxis de INSERT INTO tiene dos formas principales:</p>
+
+  <h3>Forma 1: Especificando las columnas</h3>
+  <pre>INSERT INTO nombre_tabla (columna1, columna2, columna3)
+VALUES (valor1, valor2, valor3);</pre>
+
+  <h3>Forma 2: Sin especificar columnas</h3>
+  <pre>INSERT INTO nombre_tabla
+VALUES (valor1, valor2, valor3);</pre>
+
+  <div class="tip-box">
+    <p>💡 <strong>Recomendación:</strong> Siempre especifica los nombres de las columnas. Así tu código es más claro y no se rompe si la estructura de la tabla cambia.</p>
+  </div>
+
+  <h2>Ejemplos prácticos de INSERT INTO</h2>
+
+  <h3>Insertar un registro en una tabla de productos</h3>
+  <pre>INSERT INTO productos (id, nombre, precio, stock)
+VALUES (1, 'Laptop', 1200.00, 50);</pre>
+
+  <h3>Insertar múltiples registros de una sola vez</h3>
+  <p>En SQL moderno puedes insertar varios registros en una sola sentencia:</p>
+  <pre>INSERT INTO productos (id, nombre, precio, stock)
+VALUES
+  (1, 'Laptop', 1200.00, 50),
+  (2, 'Mouse', 25.00, 200),
+  (3, 'Teclado', 45.00, 150);</pre>
+
+  <h3>Insertar con valores NULL</h3>
+  <p>Cuando un campo no tiene valor, usa NULL:</p>
+  <pre>INSERT INTO clientes (id, nombre, telefono, email)
+VALUES (1, 'Ana García', NULL, 'ana@email.com');</pre>
+
+  <h2>INSERT INTO en diferentes bases de datos</h2>
+  <p>La sintaxis de INSERT INTO es prácticamente igual en los principales motores de bases de datos:</p>
+
+  <h3>SQL Server</h3>
+  <pre>INSERT INTO empleados (id, nombre, departamento)
+VALUES (1, 'Carlos López', 'Tecnología');</pre>
+
+  <h3>MySQL</h3>
+  <pre>INSERT INTO empleados (id, nombre, departamento)
+VALUES (1, 'Carlos López', 'Tecnología');</pre>
+
+  <h3>PostgreSQL</h3>
+  <pre>INSERT INTO empleados (id, nombre, departamento)
+VALUES (1, 'Carlos López', 'Tecnología');</pre>
+
+  <h3>Oracle</h3>
+  <pre>INSERT INTO empleados (id, nombre, departamento)
+VALUES (1, 'Carlos López', 'Tecnología');
+COMMIT;</pre>
+
+  <div class="tip-box">
+    <p>💡 En Oracle es necesario ejecutar <code>COMMIT;</code> después del INSERT para confirmar la transacción.</p>
+  </div>
+
+  <!-- ANUNCIO -->
+  <div class="ad-slot">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6203943947855417" data-ad-slot="2328425295" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <h2>¿Cómo generar INSERT INTO automáticamente desde un CSV?</h2>
+  <p>Escribir sentencias INSERT INTO manualmente para cientos o miles de registros es impráctico. Lo más eficiente es usar una herramienta que genere automáticamente el script SQL a partir de tu archivo de datos.</p>
+
+  <div class="cta-box">
+    <h3>Genera INSERT INTO automáticamente</h3>
+    <p>Sube tu archivo CSV, Excel o TXT y obtén todas las sentencias INSERT INTO listas para ejecutar.</p>
+    <a href="/">Generar INSERT INTO gratis →</a>
+  </div>
+
+  <h2>Errores comunes con INSERT INTO</h2>
+  <ul>
+    <li><strong>Error de tipo de dato:</strong> Intentar insertar texto en una columna numérica. Verifica que los valores coincidan con el tipo de dato de cada columna.</li>
+    <li><strong>Violación de clave primaria:</strong> Insertar un ID que ya existe. Usa secuencias o columnas auto-incrementales para evitarlo.</li>
+    <li><strong>Columna NOT NULL vacía:</strong> Si una columna tiene restricción NOT NULL no puedes insertar NULL. Proporciona siempre un valor.</li>
+    <li><strong>Texto sin comillas:</strong> Los valores de texto deben ir entre comillas simples: <code>'texto'</code>, no <code>texto</code>.</li>
+  </ul>
+
+  <h2>Conclusión</h2>
+  <p>INSERT INTO es la instrucción fundamental para agregar datos en SQL. Dominarla es esencial para cualquier desarrollador o analista de datos. Para insertar grandes volúmenes de datos desde archivos CSV o Excel, usar un generador automático de scripts SQL te ahorra horas de trabajo.</p>
+
+  <h2>Artículos relacionados</h2>
+  <ul>
+    <li><a href="/guias/como-importar-csv-a-sql-server" style="color:#56c2c6;">Cómo importar un archivo CSV a SQL Server</a></li>
+    <li><a href="/guias/diferencia-csv-excel-txt-bases-de-datos" style="color:#56c2c6;">Diferencias entre CSV, Excel y TXT para bases de datos</a></li>
+    <li><a href="/guias/como-crear-tabla-mysql" style="color:#56c2c6;">Cómo crear una tabla en MySQL desde cero</a></li>
+  </ul>
+
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links mb-3">
+      <a href="/">Herramienta</a>
+      <a href="/guias">Guías</a>
+      <a href="/contact">Contacto</a>
+      <a href="/privacy">Privacidad</a>
+      <a href="/terms">Términos</a>
+    </div>
+    <p class="footer-copy">© 2026 Generador SQL – generadorsql.com</p>
+  </div>
+</footer>
+
+</body>
+</html>

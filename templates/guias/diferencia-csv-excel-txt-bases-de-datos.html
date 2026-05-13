@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6203943947855417" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diferencias entre CSV, Excel y TXT para bases de datos SQL</title>
+<meta name="description" content="Conoce las diferencias entre archivos CSV, Excel y TXT para importar datos a bases de datos SQL. Cuál usar según tu caso y cómo convertirlos a SQL fácilmente.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://generadorsql.com/guias/diferencia-csv-excel-txt-bases-de-datos">
+<link rel="icon" type="image/png" href="/static/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+body { background: linear-gradient(180deg,#f6f8fb,#eef3f8); font-family: system-ui; min-height:100vh; }
+.header { background:#1e3a5f; color:white; padding:15px 30px; display:flex; justify-content:space-between; align-items:center; }
+.header h1 { font-size:24px; margin:0; }
+.content { max-width:860px; margin:40px auto; padding:0 20px; }
+.content h1 { font-size:32px; color:#1e3a5f; margin-bottom:10px; }
+.content h2 { font-size:24px; color:#1e3a5f; margin-top:35px; margin-bottom:12px; }
+.content h3 { font-size:20px; color:#1e3a5f; margin-top:25px; }
+.content p { font-size:16px; line-height:1.8; color:#333; }
+.content ul, .content ol { font-size:16px; line-height:1.9; color:#333; }
+.content pre { background:#1e3a5f; color:#e9f1f8; padding:20px; border-radius:10px; font-size:14px; overflow-x:auto; }
+.cta-box { background:linear-gradient(90deg,#56c2c6,#6ed3b5); border-radius:12px; padding:25px; text-align:center; margin:35px 0; }
+.cta-box h3 { color:white; margin:0 0 10px 0; }
+.cta-box p { color:white; margin:0 0 15px 0; }
+.cta-box a { background:white; color:#1e3a5f; font-weight:700; padding:10px 25px; border-radius:8px; text-decoration:none; }
+.footer { background:#1e3a5f; color:white; padding:40px 0; margin-top:60px; text-align:center; }
+.footer-links a { color:#e9f1f8; margin:0 15px; text-decoration:none; font-size:15px; }
+.footer-copy { margin-top:20px; font-size:13px; opacity:0.7; }
+.ad-slot { background:#f8f9fa; border-radius:8px; overflow:hidden; margin:30px 0; }
+.breadcrumb-nav { font-size:14px; color:#888; margin-bottom:20px; }
+.breadcrumb-nav a { color:#56c2c6; text-decoration:none; }
+.comparison-table { width:100%; border-collapse:collapse; margin:20px 0; font-size:15px; }
+.comparison-table th { background:#1e3a5f; color:white; padding:12px 15px; text-align:left; }
+.comparison-table td { padding:11px 15px; border-bottom:1px solid #e0e0e0; background:white; }
+.comparison-table tr:hover td { background:#f0f8ff; }
+.badge-green { background:#d4edda; color:#155724; padding:3px 8px; border-radius:4px; font-size:13px; }
+.badge-yellow { background:#fff3cd; color:#856404; padding:3px 8px; border-radius:4px; font-size:13px; }
+.badge-red { background:#f8d7da; color:#721c24; padding:3px 8px; border-radius:4px; font-size:13px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="display:flex;align-items:center;gap:12px;">
+    <img src="/static/favicon.png" style="height:40px;border-radius:6px;">
+    <h1><a href="/" style="color:white;text-decoration:none;">Generador SQL</a></h1>
+  </div>
+  <a href="/" class="btn" style="background:#e9f1f8;color:#1e3a5f;font-weight:500;">Ir a la herramienta</a>
+</div>
+
+<div class="content">
+
+  <div class="breadcrumb-nav">
+    <a href="/">Inicio</a> › <a href="/guias">Guías</a> › Diferencias entre CSV, Excel y TXT
+  </div>
+
+  <h1>Diferencias entre CSV, Excel y TXT para bases de datos SQL</h1>
+  <p style="color:#888;font-size:14px;">Actualizado: abril 2026 · 5 min de lectura</p>
+
+  <p>Cuando necesitas importar datos a una base de datos SQL, lo más probable es que tengas la información en uno de estos tres formatos: <strong>CSV</strong>, <strong>Excel (.xlsx)</strong> o <strong>TXT</strong>. Aunque todos almacenan datos tabulares, tienen diferencias importantes que afectan cómo los procesas y los conviertes a SQL.</p>
+
+  <!-- ANUNCIO -->
+  <div class="ad-slot">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6203943947855417" data-ad-slot="2699231438" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <h2>Tabla comparativa</h2>
+
+  <table class="comparison-table">
+    <tr>
+      <th>Característica</th>
+      <th>CSV</th>
+      <th>Excel (.xlsx)</th>
+      <th>TXT</th>
+    </tr>
+    <tr>
+      <td>Formato</td>
+      <td>Texto plano</td>
+      <td>Binario/XML</td>
+      <td>Texto plano</td>
+    </tr>
+    <tr>
+      <td>Delimitador</td>
+      <td>Coma o punto y coma</td>
+      <td>No aplica</td>
+      <td>Variable (tab, pipe, etc.)</td>
+    </tr>
+    <tr>
+      <td>Peso del archivo</td>
+      <td><span class="badge-green">Ligero</span></td>
+      <td><span class="badge-yellow">Más pesado</span></td>
+      <td><span class="badge-green">Ligero</span></td>
+    </tr>
+    <tr>
+      <td>Fácil de abrir</td>
+      <td><span class="badge-green">Sí</span></td>
+      <td><span class="badge-green">Sí (requiere Excel)</span></td>
+      <td><span class="badge-green">Sí</span></td>
+    </tr>
+    <tr>
+      <td>Múltiples hojas</td>
+      <td><span class="badge-red">No</span></td>
+      <td><span class="badge-green">Sí</span></td>
+      <td><span class="badge-red">No</span></td>
+    </tr>
+    <tr>
+      <td>Fórmulas Excel</td>
+      <td><span class="badge-red">No</span></td>
+      <td><span class="badge-green">Sí</span></td>
+      <td><span class="badge-red">No</span></td>
+    </tr>
+    <tr>
+      <td>Ideal para SQL</td>
+      <td><span class="badge-green">Muy recomendado</span></td>
+      <td><span class="badge-yellow">Recomendado</span></td>
+      <td><span class="badge-yellow">Depende del delimitador</span></td>
+    </tr>
+  </table>
+
+  <h2>¿Qué es un archivo CSV?</h2>
+  <p>CSV (Comma-Separated Values) es el formato más utilizado para intercambiar datos tabulares. Cada línea es un registro y los campos están separados por un delimitador (normalmente coma o punto y coma). Es el formato preferido para importar datos a SQL porque es simple, ligero y universalmente compatible.</p>
+
+  <pre>id,producto,precio,stock
+1,Laptop,1200.00,50
+2,Mouse,25.00,200
+3,Teclado,45.00,150</pre>
+
+  <p><strong>Ventajas del CSV para SQL:</strong></p>
+  <ul>
+    <li>Archivo ligero, ideal para grandes volúmenes de datos</li>
+    <li>Compatible con todos los gestores de bases de datos</li>
+    <li>Fácil de generar desde Excel, Google Sheets o cualquier sistema</li>
+    <li>Sin dependencias de software propietario</li>
+  </ul>
+
+  <h2>¿Qué es un archivo Excel (.xlsx)?</h2>
+  <p>Excel es el formato de hojas de cálculo de Microsoft Office. A diferencia del CSV, puede contener múltiples hojas, fórmulas, gráficos y formatos visuales. Sin embargo, para importar datos a SQL solo importa el contenido de las celdas — las fórmulas y formatos se ignoran.</p>
+
+  <p><strong>Ventajas del Excel para SQL:</strong></p>
+  <ul>
+    <li>Permite organizar datos en múltiples hojas</li>
+    <li>Más fácil de editar visualmente antes de importar</li>
+    <li>Los tipos de datos (fecha, número, texto) suelen estar mejor definidos</li>
+  </ul>
+
+  <p><strong>Consideraciones:</strong></p>
+  <ul>
+    <li>Las fórmulas se convierten a su valor calculado al importar</li>
+    <li>Solo se procesa la primera hoja del archivo</li>
+    <li>El archivo es más pesado que un CSV equivalente</li>
+  </ul>
+
+  <!-- ANUNCIO -->
+  <div class="ad-slot">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6203943947855417" data-ad-slot="2328425295" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <h2>¿Qué es un archivo TXT para datos?</h2>
+  <p>Los archivos TXT con datos tabulares son similares al CSV pero pueden usar diferentes delimitadores: tabulación (<code>\t</code>), pipe (<code>|</code>), punto y coma (<code>;</code>) u otros caracteres. Son comunes en exportaciones de sistemas ERP, SAP u otros sistemas empresariales.</p>
+
+  <pre>id|producto|precio|stock
+1|Laptop|1200.00|50
+2|Mouse|25.00|200</pre>
+
+  <p><strong>Consideraciones con TXT:</strong></p>
+  <ul>
+    <li>El delimitador puede variar — debes identificarlo antes de importar</li>
+    <li>Algunos sistemas generan TXT con anchos fijos (sin delimitador), lo que complica la importación</li>
+    <li>Si el delimitador es tabulación, a veces se denomina TSV (Tab-Separated Values)</li>
+  </ul>
+
+  <h2>¿Cuál formato es mejor para importar a SQL?</h2>
+  <p>Para la mayoría de los casos, el orden de preferencia es:</p>
+  <ol>
+    <li><strong>CSV</strong> — Primera opción. Simple, ligero y universalmente compatible.</li>
+    <li><strong>Excel (.xlsx)</strong> — Buena opción si tus datos ya están en Excel y tienen múltiples columnas bien definidas.</li>
+    <li><strong>TXT</strong> — Válido si conoces el delimitador. Requiere un paso extra de configuración.</li>
+  </ol>
+
+  <div class="cta-box">
+    <h3>Convierte CSV, Excel o TXT a SQL automáticamente</h3>
+    <p>Nuestra herramienta detecta el formato y el delimitador automáticamente y genera el script SQL listo para ejecutar.</p>
+    <a href="/">Convertir archivo a SQL →</a>
+  </div>
+
+  <h2>Artículos relacionados</h2>
+  <ul>
+    <li><a href="/guias/como-importar-csv-a-sql-server" style="color:#56c2c6;">Cómo importar un archivo CSV a SQL Server</a></li>
+    <li><a href="/guias/que-es-insert-into-sql" style="color:#56c2c6;">¿Qué es INSERT INTO en SQL y cómo se usa?</a></li>
+    <li><a href="/guias/como-crear-tabla-mysql" style="color:#56c2c6;">Cómo crear una tabla en MySQL desde cero</a></li>
+  </ul>
+
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links mb-3">
+      <a href="/">Herramienta</a>
+      <a href="/guias">Guías</a>
+      <a href="/contact">Contacto</a>
+      <a href="/privacy">Privacidad</a>
+      <a href="/terms">Términos</a>
+    </div>
+    <p class="footer-copy">© 2026 Generador SQL – generadorsql.com</p>
+  </div>
+</footer>
+
+</body>
+</html>

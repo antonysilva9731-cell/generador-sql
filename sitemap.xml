@@ -8,6 +8,36 @@
   </url>
 
   <url>
+    <loc>https://generadorsql.com/guias</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://generadorsql.com/guias/como-importar-csv-a-sql-server</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://generadorsql.com/guias/que-es-insert-into-sql</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://generadorsql.com/guias/diferencia-csv-excel-txt-bases-de-datos</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://generadorsql.com/guias/como-crear-tabla-mysql</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
     <loc>https://generadorsql.com/contact</loc>
     <priority>0.5</priority>
     <changefreq>monthly</changefreq>
